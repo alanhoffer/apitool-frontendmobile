@@ -9,7 +9,7 @@ export const AuthProvider = ({children}) => {
 
 
     // State variables for the AuthContext
-    const [userInfo, setUserInfo] = useState({});
+    const [sessionInfo, setSessionInfo] = useState({});
     const [isLoading, setLoading] = useState(false);
     const [splashLoading, setSplashLoading] = useState(false);
 
@@ -20,9 +20,9 @@ export const AuthProvider = ({children}) => {
         setLoading(true);
         axios.post(`${BASE_URL}register`, {username, email, password, name, phone, city})
         .then(response => { 
-            let userInfo = response.data;
-            setUserInfo(userInfo);
-            AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
+            let sessionInfo = response.data;
+            setSessionInfo(sessionInfo);
+            AsyncStorage.setItem('sessionInfo', JSON.stringify(sessionInfo));
             setLoading(false);
         })
         .catch(error => {
@@ -35,9 +35,9 @@ export const AuthProvider = ({children}) => {
         setLoading(true);
         axios.post(`${BASE_URL}login`, {username, password})
         .then(response => {
-            let userInfo = response.data;
-            setUserInfo(userInfo);
-            AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
+            let sessionInfo = response.data;
+            setSessionInfo(sessionInfo);
+            AsyncStorage.setItem('sessionInfo', JSON.stringify(sessionInfo));
             setLoading(false);
         })
         .catch(error => {
@@ -50,11 +50,11 @@ export const AuthProvider = ({children}) => {
         setLoading(true);
         axios.post (`${BASE_URL}logout`, {},
         {
-            headers: {Authorization: `Bearer ${userInfo.access_token}`}
+            headers: {Authorization: `Bearer ${sessionInfo.access_token}`}
         }
         ).then (response => {
-            AsyncStorage.removeItem('userInfo');
-            setUserInfo({});
+            AsyncStorage.removeItem('sessionInfo');
+            setSessionInfo({});
             setLoading(false);
         }).catch(error => {
             console.log(error);
@@ -65,18 +65,18 @@ export const AuthProvider = ({children}) => {
     const isLoggedIn = () => {
         try {
             setSplashLoading(true);
-            AsyncStorage.getItem('userInfo').then(userInfo => {
-                if(userInfo){
-                    const response = JSON.parse(userInfo);
-                    setUserInfo(response);
+            AsyncStorage.getItem('sessionInfo').then(sessionInfo => {
+                if(sessionInfo){
+                    const response = JSON.parse(sessionInfo);
+                    setSessionInfo(response);
                     axios.get(`${BASE_URL}token`, {
                         headers: {Authorization: `Bearer ${response.access_token}`}
                     }).then(response => {
                         setSplashLoading(false);
                     }).catch(error => {
                         setSplashLoading(false);
-                        setUserInfo({});
-                        AsyncStorage.removeItem('userInfo');
+                        setSessionInfo({});
+                        AsyncStorage.removeItem('sessionInfo');
                     }
                     );
                     setSplashLoading(false);
@@ -104,7 +104,7 @@ export const AuthProvider = ({children}) => {
     return(
     <AuthContext.Provider value={{
         isLoading,
-        userInfo,
+        sessionInfo,
         splashLoading,
         register,
         login,

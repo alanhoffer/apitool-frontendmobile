@@ -6,8 +6,9 @@ import {useContext} from 'react';
 import HomeScreen from '../../Screens/HomeScreen';
 import LoginScreen from '../../Screens/LoginScreen';
 import RegisterScreen from '../../Screens/RegisterScreen';
-import Dashboard  from '../../Screens/Dashboard';
+import DashboardScreen  from '../../Screens/DashboardScreen';
 import SplashScreen from '../../Screens/SplashScreen';
+import TermConScreen from '../../Screens/TermConScreen';
 
 // CONTEXT
 import { AuthContext } from '../auth/AuthContext';
@@ -16,7 +17,7 @@ const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
 
-  const { userInfo, splashLoading } = useContext(AuthContext);
+  const { sessionInfo, splashLoading } = useContext(AuthContext);
 
 
   return (
@@ -26,10 +27,10 @@ export default function Navigation() {
       (
         // Splash Screen if is loading or checking if user is logged in
         <Stack.Screen name="SplashScreen" component={SplashScreen} options={{headerShown: false}}/>
-      ) : userInfo.access_token ? (
+      ) : sessionInfo.access_token ? (
         // Dashboard if user is logged in
         <>
-        <Stack.Screen options={{headerShown: false}} name="Dashboard" component={Dashboard} />
+        <Stack.Screen options={{headerShown: false}} name="DashboardScreen" component={DashboardScreen} />
         </>
         ) : (   
         // Login Screen if user is not logged in
@@ -37,6 +38,7 @@ export default function Navigation() {
           <Stack.Screen options={{headerShown: false}} name="HomeScreen" component={HomeScreen} />
           <Stack.Screen options={{headerShown: false}} name="LoginScreen" component={LoginScreen} />
           <Stack.Screen options={{headerShown: false}} name="RegisterScreen" component={RegisterScreen} />
+          <Stack.Screen options={{headerShown: false}} name="TermConScreen" component={TermConScreen} />
         </>
         )
       }

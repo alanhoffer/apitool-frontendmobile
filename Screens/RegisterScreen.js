@@ -12,7 +12,7 @@ export default function RegisterScreen({navigation}){
 
     // VARIABLES
 
-    const [menu, setMenu] = useState('register');
+    const [menu, setMenu] = useState('register_first_step');
     const [email, setEmail] = useState(null);
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
@@ -90,9 +90,9 @@ export default function RegisterScreen({navigation}){
     }
 
 
-    const handleNext = () => {
+    const handleNextStep = () => {
         if(usernameWrong && emailWrong && passwordWrong === true){
-            setMenu('register2')
+            setMenu('register_second_step')
         }
         else{
             Alert.alert("Llena todos los campos")
@@ -109,7 +109,7 @@ export default function RegisterScreen({navigation}){
     }
 
 
-    if(menu === 'register'){
+    if(menu === 'register_first_step'){
         return(
         <SafeAreaView style={styles.container}>
             <ScrollView 
@@ -125,6 +125,7 @@ export default function RegisterScreen({navigation}){
             <View style={styles.input_container}>
                 <Text>Email</Text>
                 <TextInput
+                    autoFocus={true}
                     style={styles.input}
                     onChangeText={handleEmail}
                     value={email}
@@ -157,25 +158,25 @@ export default function RegisterScreen({navigation}){
                 <Text style={(password != null) ? [styles.error, {display:'flex'}]:styles.error}>{passwordWrong ? "" : "Contraseña incorrecta"}</Text>
                 </View>
             </View>
-            <Pressable style={styles.registerbutton}onPress={() => handleNext()} >
+            <Pressable style={styles.registerbutton}onPress={() => handleNextStep()} >
                     <Text>Siguiente</Text>
             </Pressable>
             <View>
                 <Text style={styles.terminostext}>Al registrarse esta aceptando</Text>
-                <Text style={styles.terminos} onPress={() => navigation.navigate('Terminos')}>Terminos & Condiciones</Text>
+                <Text style={styles.terminos} onPress={() => navigation.navigate('TermConScreen')}>Terminos & Condiciones</Text>
             </View>
         </ScrollView>
         </SafeAreaView>
         )
     }
-    else if(menu === 'register2'){
+    else if(menu === 'register_second_step'){
         return(
         <SafeAreaView style={styles.container}>
             <Spinner visible={isLoading} />
             <ScrollView 
             contentContainerStyle={{paddingTop:50, paddingHorizontal:20,}}
             >
-                <Icon  name="arrow-back-outline" style={styles.back}  onPress={() => setMenu('register')} />
+                <Icon  name="arrow-back-outline" style={styles.back}  onPress={() => setMenu('register_first_step')} />
                 <View>
                     <Text style={styles.title}>REGISTRATE</Text>
                     <Text style={styles.subtitle}>Empezemos a conocer un poco de ti</Text>

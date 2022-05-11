@@ -1,32 +1,32 @@
-import {View, Text, StyleSheet, Pressable, Image} from 'react-native';
+import {View, Text, StyleSheet, Pressable, Image, Alert} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import HomeLogo from '../assets/home/HomeLogo.png';
 
 export default function HomeScreen({navigation}){
     return (
-        <View style={welcome.container}>
-        <Image source={HomeLogo} style={welcome.logo}/>
+        <View style={styles.container}>
         <View>
-            <Text style={welcome.title}>Bienvenido a Apitool!</Text>
-            <Text style={welcome.text}>Crea una cuenta o inicia sesión  y conéctate con apicultores de todo el mundo.</Text>
+            <Image source={HomeLogo} style={styles.logo}/>
+            <Text style={styles.title}>Bienvenido a Apitool!</Text>
+            <Text style={styles.text}>Crea una cuenta o inicia sesión  y conéctate con apicultores de todo el mundo.</Text>
         </View>
         <View>
-            <Pressable style={welcome.loginbutton} onPress={() => navigation.navigate('LoginScreen')}  >
+            <Pressable style={styles.loginbutton} onPress={() => navigation.navigate('LoginScreen')}  >
                 <Text >Inicia sesión</Text>
             </Pressable>            
-            <Pressable style={welcome.registerbutton} onPress={() => navigation.navigate('RegisterScreen')}   >
+            <Pressable style={styles.registerbutton} onPress={() => navigation.navigate('RegisterScreen')}   >
                 <Text style={{color: "white"}}>Registrate</Text>
             </Pressable>
         </View>
 
-        <Text style={welcome.support}>Nesesitas ayuda? Contacto</Text>
+        <Text style={styles.support} onPress={() => Alert.alert('Estamos trabajando en esta seccion, apitoolhelp@gmail.com')}>Nesesitas ayuda? Contacto</Text>
 
     </View>
     );
 
 }
 
-const welcome = StyleSheet.create({
+const styles = StyleSheet.create({
     container:{
         flex:1,
         alignItems:'center',
@@ -41,13 +41,14 @@ const welcome = StyleSheet.create({
     },
     title: {
         fontSize: wp('5%'),
-        marginTop: hp('2%'),
-        alignSelf: 'center',
+        textAlign:'center',
+        width: wp('60%'),
+        fontWeight: 'bold',
     },
     text: {
         fontSize: wp('4%'),
-        width: wp('80%'),
-        textAlign: 'center',
+        textAlign:'center',
+        width: wp('60%'),
         marginTop: hp('2%'),
 
     },

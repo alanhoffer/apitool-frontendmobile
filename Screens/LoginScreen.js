@@ -50,7 +50,7 @@ export default function LoginScreen({navigation}){
             login(username, password);
         }
         else{
-            Alert.alert("Login Failed")
+            Alert.alert("Llena todos los campos")
         }
     }
 
@@ -72,6 +72,7 @@ export default function LoginScreen({navigation}){
                             <View style={styles.input_container}>
                                 <Text>Usuario</Text>
                                 <TextInput
+                                    autoFocus={true}
                                     style={styles.input}
                                     onChangeText={handleUsername}
                                     value={username}
@@ -90,7 +91,8 @@ export default function LoginScreen({navigation}){
                                     placeholder="Contraseña"
                                 />
                                 <Text style={(password != null) ? [styles.error, {display:'flex'}]:styles.error}>{passwordWrong ? "" : "Contraseña incorrecta"}</Text>
-                                <Text style={{textAlign: 'right'}} onPress={() => navigation.navigate('LoginScreen')}>Perdiste la contraseña?</Text>
+                                <Text style={styles.passwordLoss} onPress={() => 
+                                Alert.alert('Estamos trabajando en esta seccion, apitoolhelp@gmail.com')}>Perdiste la contraseña?</Text>
                             </View>
                         </View>
                         <Pressable style={styles.loginbutton}onPress={() => handleLogin(username, password)} >
@@ -158,6 +160,7 @@ const styles = StyleSheet.create({
       },
     passwordLoss:  {
         fontSize: wp('4%'),
+        marginTop: hp('2%'),
         textAlign: 'right',
     },
     nothaveaccount:  {

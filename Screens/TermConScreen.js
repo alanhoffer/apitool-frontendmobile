@@ -8,7 +8,7 @@ export default function TermConScreen({navigation}){
         <ScrollView 
         contentContainerStyle={{paddingTop:50, paddingHorizontal:20,}}
         >
-            <Icon style={terminos.back} name="arrow-back-outline" size={30} color="black" onPress={() => navigation.navigate('Login')} />
+            <Icon style={terminos.back} name="arrow-back-outline" size={30} color="black" onPress={() => navigation.goBack()} />
             <Text style={terminos.title}>Términos y Condiciones</Text>
             <Text style={terminos.subtitle}>
                 Termino uno example 
