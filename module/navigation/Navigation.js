@@ -3,15 +3,25 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {useContext} from 'react';
 
 // SCREENS
-import HomeScreen from '../../Screens/HomeScreen';
-import LoginScreen from '../../Screens/LoginScreen';
-import RegisterScreen from '../../Screens/RegisterScreen';
-import DashboardScreen  from '../../Screens/DashboardScreen';
-import SplashScreen from '../../Screens/SplashScreen';
-import TermConScreen from '../../Screens/TermConScreen';
+import HomeScreen from '../../UI/Screens/HomeScreen';
+import LoginScreen from '../../UI/Screens/LoginScreen';
+import RegisterScreen from '../../UI/Screens/RegisterScreen';
+import DashboardScreen  from '../../UI/Screens/DashboardScreen';
+import SplashScreen from '../../UI/Screens/SplashScreen';
+import TermConScreen from '../../UI/Screens/TermConScreen';
+import NoticeScreen from '../../UI/Screens/NoticeScreen';
+import ProfileScreen from '../../UI/Screens/ProfileScreen';
+import ApiariesScreen from '../../UI/Screens/ApiariesScreen';
+import AddApiaryScreen from '../../UI/Screens/AddApiaryScreen';
+
+// SCREENS OPTIONS
+import { DashboardHeader } from '../../UI/HeadersOptions/DashboardHeader';
+import { NoticeHeader } from '../../UI/HeadersOptions/NoticeHeader';
+import { ProfileHeader } from '../../UI/HeadersOptions/ProfileHeader';
+import { ApiariesHeader } from '../../UI/HeadersOptions/ApiariesHeader';
 
 // CONTEXT
-import { AuthContext } from '../auth/AuthContext';
+import { AuthContext } from '../Auth/AuthContext';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +40,11 @@ export default function Navigation() {
       ) : sessionInfo.access_token ? (
         // Dashboard if user is logged in
         <>
-        <Stack.Screen options={{headerShown: false}} name="DashboardScreen" component={DashboardScreen} />
+        <Stack.Screen options={DashboardHeader} name="DashboardScreen" component={DashboardScreen} />
+        <Stack.Screen options={NoticeHeader} name="NoticeScreen" component={NoticeScreen} />
+        <Stack.Screen options={ProfileHeader} name="ProfileScreen" component={ProfileScreen} />
+        <Stack.Screen options={ApiariesHeader} name="ApiariesScreen" component={ApiariesScreen} />
+        <Stack.Screen options={{headerShown: false}} name="AddApiaryScreen" component={AddApiaryScreen} />
         </>
         ) : (   
         // Login Screen if user is not logged in

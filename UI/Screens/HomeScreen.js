@@ -1,6 +1,7 @@
 import {View, Text, StyleSheet, Pressable, Image, Alert} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import HomeLogo from '../assets/home/HomeLogo.png';
+import HomeLogo from '../../assets/home/HomeLogo.png';
+import { UIColors } from '../UIColors';
 
 export default function HomeScreen({navigation}){
     return (
@@ -58,8 +59,8 @@ const styles = StyleSheet.create({
         paddingVertical: hp('2%'),
         paddingHorizontal: wp('10%'),
         borderRadius: 4,
-        borderColor: "black",
-        backgroundColor: 'white',
+        borderColor: UIColors.black,
+        backgroundColor: UIColors.white,
         elevation: 1,
         marginTop: hp('2%'),
       },
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: wp('10%'),
         borderRadius: 4,
         borderWidth: 2,
-        borderColor: "#424242",
+        borderColor: UIColors.light_black,
         marginTop: hp('2%'),
       },
     registerbutton: {
@@ -79,9 +80,9 @@ const styles = StyleSheet.create({
         paddingVertical: hp('2%'),
         paddingHorizontal: wp('10%'),
         borderRadius: 4,
-        borderColor: "#424242",
+        borderColor: UIColors.light_black,
         elevation: 1,
-        backgroundColor: '#424242',
+        backgroundColor: UIColors.light_black,
         marginTop: hp('2%'),
       },
       support: {

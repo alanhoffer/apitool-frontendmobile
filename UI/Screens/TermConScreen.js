@@ -1,6 +1,7 @@
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Text, StyleSheet, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { UIColors } from '../UIColors';
 
 
 export default function TermConScreen({navigation}){
@@ -45,14 +46,14 @@ const terminos = StyleSheet.create({
         fontSize: wp('5%'),
         marginTop: hp('8%'),
         fontWeight: 'bold',
-        color: '#3D3E3E',
+        color: UIColors.light_black
     },  
     subtitle:  {
         marginTop: hp('5%'),
         width: wp('90%'),
         fontSize: wp('4%'),
         fontWeight: 'bold',
-        color: '#9A9A9A',
+        color: UIColors.light_grey
     },
     text:  {
         fontSize: wp('3%'),
