@@ -2,10 +2,11 @@ import {View, Text, StyleSheet, TextInput, Pressable , SafeAreaView, ScrollView,
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Picker} from '@react-native-picker/picker';
-import * as verify from '../module/verifing/Verifing';
+import * as verify from '../../module/Verifing/Verifing';
 import React, { useState, useContext  } from 'react';
-import { AuthContext } from '../module/auth/AuthContext';
+import { AuthContext } from '../../module/Auth/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
+import { UIColors } from '../UIColors';
 
 
 export default function RegisterScreen({navigation}){
@@ -213,7 +214,6 @@ export default function RegisterScreen({navigation}){
                     onValueChange={(itemValue, itemIndex) => setCity(itemValue)}
                 >
                     <Picker.Item label="Buenos Aires" value="Buenos Aires" />
-                    <Picker.Item label="Mendoza" value="Mendoza" />
                 </Picker>
                 <Text style={(city == null) ? [styles.error, {display:'flex'}]:styles.error}>{cityWrong ? "" : "Introduce una Ciudad incorrecta"}</Text>
             </View>
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
     },      
     back:{
         fontSize:30,
-        color:'black'
+        color: UIColors.light_black,
     },
     title: {
         width: wp('90%'),
@@ -266,16 +266,16 @@ const styles = StyleSheet.create({
         paddingHorizontal: wp('30%'),
         borderRadius: 4,
         borderWidth: 2,
-        borderColor: "#424242",
+        borderColor: UIColors.light_black,
         marginTop: hp('3%'),
-        color: '#3D3E3E',
+        color: UIColors.light_black,
       },
       subtitle:  {
         marginBottom: hp('5%'),
         width: wp('90%'),
         fontSize: wp('4%'),
         fontWeight: 'bold',
-        color: '#9A9A9A',
+        color: UIColors.light_grey,
     },
     terminos:  {
         fontSize: wp('3%'),
@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
     },
     error: {
         display:'none',
-        color: 'red',
+        color: UIColors.light_red,
         fontSize: wp('3%'),
     }
 })

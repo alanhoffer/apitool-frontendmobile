@@ -1,0 +1,7 @@
+            <View style={styles.header}> 
+                <Text style={styles.welcome}> Hola, {user.name} ! </Text>
+                <View style={{flexDirection:'row'}}>
+                <Icon style={styles.notifications} name="notifications-outline" color="black" onPress={() => navigation.navigate('NoticeComponent')} />
+                <Icon style={styles.alert} name="alert-circle-outline" onPress={() => logout()}  />
+            </View>
+        </View>

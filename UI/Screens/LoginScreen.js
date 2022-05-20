@@ -1,10 +1,11 @@
 import {View, Text, StyleSheet, TextInput, Pressable, SafeAreaView, ScrollView, Alert } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { useState,useContext, useRef, useEffect  } from 'react';
-import * as verify from '../module/verifing/Verifing';
-import AuthContext from '../module/auth/AuthContext';
+import { useState,useContext  } from 'react';
+import * as verify from '../../module/Verifing/Verifing';
+import AuthContext from '../../module/Auth/AuthContext';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
+import { UIColors } from '../UIColors';
 
 export default function LoginScreen({navigation}){
 
@@ -124,14 +125,14 @@ const styles = StyleSheet.create({
         fontSize: wp('5%'),
         marginTop: hp('8%'),
         fontWeight: 'bold',
-        color: '#3D3E3E',
+        color: UIColors.light_black,
     },  
     subtitle:  {
         marginBottom: hp('5%'),
         width: wp('90%'),
         fontSize: wp('4%'),
         fontWeight: 'bold',
-        color: '#9A9A9A',
+        color: UIColors.light_grey,
     },
     icon: {
         display: 'none',
@@ -155,8 +156,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: wp('30%'),
         borderRadius: 4,
         borderWidth: 2,
-        borderColor: "#424242",
-        color: '#3D3E3E',
+        borderColor: UIColors.light_black,
+        color: UIColors.light_black,
       },
     passwordLoss:  {
         fontSize: wp('4%'),

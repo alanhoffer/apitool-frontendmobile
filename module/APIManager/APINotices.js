@@ -7,7 +7,6 @@ export async function getNotices(sessionInfo){
             'Authorization': `Bearer ${sessionInfo.access_token}`
         }
     }).then(response => response.json())
-    .then(responseJson => { return responseJson })
     .catch(error => {
         console.log(error);
     }

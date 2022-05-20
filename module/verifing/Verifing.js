@@ -1,4 +1,4 @@
-import {EMAIL_REGEX, PASSWORD_REGEX, USERNAME_REGEX, NAMESURNAME_REGEX, PHONE_REGEX, CITY_REGEX} from '../variables/regex';
+import {EMAIL_REGEX, PASSWORD_REGEX, USERNAME_REGEX, NAMESURNAME_REGEX, PHONE_REGEX, CITY_REGEX} from '../Variables/regex';
 
 export function email(email) {
 
