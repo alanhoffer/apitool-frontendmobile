@@ -19,6 +19,7 @@ import { DashboardHeader } from '../../UI/HeadersOptions/DashboardHeader';
 import { NoticeHeader } from '../../UI/HeadersOptions/NoticeHeader';
 import { ProfileHeader } from '../../UI/HeadersOptions/ProfileHeader';
 import { ApiariesHeader } from '../../UI/HeadersOptions/ApiariesHeader';
+import { AddApiariesHeader } from '../../UI/HeadersOptions/AddApiariesHeader';
 
 // CONTEXT
 import { AuthContext } from '../Auth/AuthContext';
@@ -44,7 +45,7 @@ export default function Navigation() {
         <Stack.Screen options={NoticeHeader} name="NoticeScreen" component={NoticeScreen} />
         <Stack.Screen options={ProfileHeader} name="ProfileScreen" component={ProfileScreen} />
         <Stack.Screen options={ApiariesHeader} name="ApiariesScreen" component={ApiariesScreen} />
-        <Stack.Screen options={{headerShown: false}} name="AddApiaryScreen" component={AddApiaryScreen} />
+        <Stack.Screen options={AddApiariesHeader} name="AddApiaryScreen" component={AddApiaryScreen} />
         </>
         ) : (   
         // Login Screen if user is not logged in

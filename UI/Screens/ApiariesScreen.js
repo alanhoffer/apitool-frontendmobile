@@ -35,8 +35,6 @@ export default function ApiarysScreen({navigation}){
             console.log(error);
         }
         )
-        
-
     }, []);
 
     useEffect(() => {
